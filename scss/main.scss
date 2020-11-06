@@ -1,0 +1,121 @@
+@import './config';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    --bg: #FCFCFC;
+    --bg-panel: #EBEBEB;
+    --color-headings: #0077ff;
+    --color-text: #333333;
+}
+
+html[data-theme='dark'] {
+    --bg: #333333;
+    --bg-panel: #434343;
+    --color-headings: #3694FF;
+    --color-text: #B5B5B5;
+}
+
+body {
+    background-color: var(--bg);
+}
+
+.container {
+    background-color: var(--bg);
+    // border: 1px solid red;
+}
+
+.card {
+    background-color: var(--bg-panel);
+    padding: 5em;
+    margin: 5em;
+    border-radius: 15px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 0;
+    }
+
+    &__title {
+        text-transform: capitalize;
+        color: var(--color-headings);
+    }
+
+    &__content {
+        padding: 1em 0;
+    }
+
+    &__text {
+        color: var(--color-text);
+        font-size: 1.1rem;
+        line-height: 1.8rem;
+    }
+}
+
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    // border: 1px solid red;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background-color: grey;
+    float: right;
+    border-radius: 100px;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border-radius: 90px;
+        transition: 0.3s;
+    }
+}
+
+input:checked + label {
+    background-color: var(--color-headings);
+}
+
+input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translate(-100%);
+}
+
+label:active::after {
+    width: 45px;
+}
+
+html.transition,
+html.transition *,
+html.transition *::before,
+html.transition *::after {
+    transition: all 800ms ease-in-out;
+    transition-delay: 0 !important;
+}
+
+
